@@ -13,7 +13,4 @@ function core:gModule(name)
     local module = self:gHttp(module_url, false)
     return module
 end
-
-
-
 return getgenv().core
