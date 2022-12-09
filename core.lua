@@ -25,4 +25,11 @@ function core:gPlayer(name)
     end
     return players.LocalPlayer
 end
+function core:notify(title, text, duration)
+    if not title then return end
+    local text = text or ''
+    local duration = duration or 3
+	game:GetService("StarterGui"):SetCore("SendNotification", { Title = title, Text = text, Duration = duration })
+	return true
+end
 return getgenv().core
