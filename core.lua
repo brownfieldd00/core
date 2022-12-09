@@ -9,8 +9,20 @@ function core:gHttp(url, default)
     return ret
 end
 function core:gModule(name)
-    local module_url = ('https://raw.githubusercontent.com/brownfieldd00/%s.lua'):format(name)
+    local module_url = ('https://raw.githubusercontent.com/brownfieldd00/Roblox/main/Modules/%s.lua'):format(name)
     local module = self:gHttp(module_url, false)
     return module
+end
+function core:gPlayer(name)
+    local players = game:GetService('Players')
+    if name then
+        for i, v in pairs(players:GetPlayers()) do
+            if v.Name:lower():sub(1, #name) == name:lower() then
+                return v
+            end
+        end
+        return nil
+    end
+    return players.LocalPlayer
 end
 return getgenv().core
