@@ -11,7 +11,7 @@ end
 function core:gModule(name)
     local module_url = ('https://raw.githubusercontent.com/brownfieldd00/Roblox/main/Modules/%s.lua'):format(name)
     local module = self:gHttp(module_url, false)
-    return module
+    return loadstring(module)()
 end
 function core:gPlayer(name)
     local players = game:GetService('Players')
