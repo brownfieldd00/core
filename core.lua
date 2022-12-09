@@ -32,4 +32,11 @@ function core:notify(title, text, duration)
 	game:GetService("StarterGui"):SetCore("SendNotification", { Title = title, Text = text, Duration = duration })
 	return true
 end
+function core:tween(object, properties, duration)
+    local duration = duration or 1
+    local tweenService = game:GetService('TweenService')
+    local tween = tweenService:Create(object, TweenInfo.new(duration), properties)
+    tween:Play()
+    return true
+end
 return getgenv().core
