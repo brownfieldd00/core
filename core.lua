@@ -73,7 +73,9 @@ end
 function core:stopRunningInstance()
     if getgenv()[tostring(game.JobId)] then
         getgenv()[tostring(game.JobId)].stop()
-        return
+        return true
+    else
+        return false
     end
 end
 return getgenv().core
