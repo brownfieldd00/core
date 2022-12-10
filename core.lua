@@ -50,7 +50,6 @@ end
 function core:getConnection(name)
     return core.Events[name]
 end
-
 function core:actuallyRequire(name, id)
     local success, module = pcall(function()
         return game:GetObjects('rbxassetid://' .. tostring(id))[1].Source
@@ -60,6 +59,21 @@ function core:actuallyRequire(name, id)
         return core.Modules[name]
     else
         return { error = true }
+    end
+end
+function core:registerSession()
+    run = true
+    getgenv()[tostring(game.JobId)] = {
+        stop = function()
+            run = false
+        end
+    }
+    return true
+end
+function core:stopRunningInstance()
+    if getgenv()[tostring(game.JobId)] then
+        getgenv()[tostring(game.JobId)].stop()
+        return
     end
 end
 return getgenv().core
