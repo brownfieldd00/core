@@ -40,8 +40,12 @@ function core:cTween(object, properties, duration)
     return true
 end
 core.Events = {}
+core.Events.__index = core.Events
 function core:bindEvent(name, event, callback)
     self.Events[name] = event:Connect(callback)
     return self.Events[name]
+end
+function core:getConnection(name)
+    return core.Events[name]
 end
 return getgenv().core
