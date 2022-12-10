@@ -39,4 +39,9 @@ function core:cTween(object, properties, duration)
     tween:Play()
     return true
 end
+core.Events = {}
+function core:bindEvent(name, event, callback)
+    self.Events[name] = event:Connect(callback)
+    return self.Events[name]
+end
 return getgenv().core
