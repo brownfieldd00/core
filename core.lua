@@ -8,10 +8,12 @@ function core:gHttp(url, default)
     if not success then return default end
     return ret
 end
+core.Modules = {}
 function core:gModule(name)
     local module_url = ('https://raw.githubusercontent.com/brownfieldd00/Roblox/main/Modules/%s.lua'):format(name)
     local module = self:gHttp(module_url, false)
-    return loadstring(module)()
+    core.Modules[name] = loadstring(module)()
+    return core.Modules[name]
 end
 function core:gPlayer(name)
     local players = game:GetService('Players')
@@ -47,5 +49,17 @@ function core:bindEvent(name, event, callback)
 end
 function core:getConnection(name)
     return core.Events[name]
+end
+
+function core:actuallyRequire(name, id)
+    local success, module = pcall(function()
+        return game:GetObjects('rbxassetid://' .. tostring(id))[1].Source
+    end)
+    if success then
+        core.Modules[name] = loadstring(module)()
+        return core.Modules[name]
+    else
+        return { error = true }
+    end
 end
 return getgenv().core
