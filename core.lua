@@ -98,4 +98,14 @@ function core:eTool(name)
     end
     return tool
 end
+function core:init(game_name, make_window)
+    local title = game_name
+    title = title .. 'GUI - github.com/brownfieldd00'
+    self:stopRunningInstance()
+    self:registerSession()
+    if make_window then
+        library = core:gModule('UiLibrary')
+        return library:AddWindow(title)
+    end
+end
 return getgenv().core
