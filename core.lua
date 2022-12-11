@@ -82,4 +82,17 @@ function core:gTool(name)
     if not name then return self:gPlayer().Character:FindFirstChildOfClass('Tool') end
     return self:gPlayer().Character:FindFirstChild(name) or self:gPlayer().Backpack:FindFirstChild(name)
 end
+function core:eTool(name)
+    local tool = nil
+    for i, v in pairs(core:gPlayer().Backpack:GetChildren()) do
+        if v.Name == name then tool = v break end
+    end
+    for i, v in pairs(core:gPlayer().Character:GetChildren()) do
+        if v.Name == name and v:IsA('Tool') then tool = v break end
+    end
+    if tool then
+        tool.Parent = self:gPlayer().Character
+    end
+    return tool
+end
 return getgenv().core
