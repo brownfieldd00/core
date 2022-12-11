@@ -44,7 +44,9 @@ end
 core.Events = {}
 core.Events.__index = core.Events
 function core:bindEvent(name, event, callback)
-    self.Events[name] = event:Connect(callback)
+    self.Events[name] = event:Connect(function(...)
+        return pcall(callback, ...)
+    end)
     return self.Events[name]
 end
 function core:getConnection(name)
