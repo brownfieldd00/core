@@ -78,4 +78,8 @@ function core:stopRunningInstance()
         return false
     end
 end
+function core:gTool(name)
+    if not name then return self:gPlayer().Character:FindFirstChildOfClass('Tool') end
+    return self:gPlayer().Character:FindFirstChild(name) or self:gPlayer().Backpack:FindFirstChild(name)
+end
 return getgenv().core
