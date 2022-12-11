@@ -1,3 +1,4 @@
+getgenv = getgenv or getfenv
 getgenv().core = {}
 local core = getgenv().core
 function core:gHttp(url, default)
