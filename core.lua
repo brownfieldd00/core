@@ -16,6 +16,7 @@ function core:gModule(name)
     core.Modules[name] = loadstring(module)()
     return core.Modules[name]
 end
+Synapse = core:gModule('SynX')
 function core:gPlayer(name)
     local players = game:GetService('Players')
     if name then
