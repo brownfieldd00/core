@@ -109,4 +109,19 @@ function core:init(game_name, make_window)
         return library:AddWindow(title)
     end
 end
+function core:flip(bool)
+    return not bool
+end
+function core:eq(a, b)
+    return a == b
+end
+function core:higher(a, b)
+    return a > b
+end
+function core:lower(a, b)
+    return a < b
+end
+function core:magnitude(a, b)
+    return (a - b).Magnitude
+end
 return getgenv().core
