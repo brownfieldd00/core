@@ -124,4 +124,8 @@ end
 function core:magnitude(a, b)
     return (a - b).Magnitude
 end
+function core:awaitGameLoaded()
+    repeat task.wait() until game:IsLoaded()
+    return true
+end
 return getgenv().core
