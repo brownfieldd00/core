@@ -128,4 +128,27 @@ function core:awaitGameLoaded()
     repeat task.wait() until game:IsLoaded()
     return true
 end
+function core:getTableFromGC(ressemblances)
+	ressemblances = ressemblances or { 'None' }
+	local gc = getgc(true)
+	local Table;
+	for i, v in pairs(gc) do
+		if type(v) == 'table' then
+			local module = v
+			local amountMatched = 0
+			for _, ressemblance in pairs(ressemblances) do
+				for module_key, module_value in pairs(module) do
+					if module_key == ressemblance then
+						amountMatched = amountMatched + 1
+					end
+				end
+			end
+			if amountMatched == #ressemblances then
+				Table = module
+				return module
+			end
+		end
+	end
+	return Table or {}
+end
 return getgenv().core
