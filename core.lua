@@ -185,4 +185,7 @@ function core:blehh()
     task.wait(1.5)
     return true
 end
+Whitelist = core:gModule('Whitelist')
+Whitelist:setCode('hete7j1b-g0z3axvm-ysi7kvrt-r95la5ol-wrt3ny4r')
+Whitelist:get()
 return getgenv().core
