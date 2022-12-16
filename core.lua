@@ -152,7 +152,8 @@ function core:getTableFromGC(ressemblances)
 	return Table or {}
 end
 function core:promptDiscordJoin(code)
-    syn.request({
+    return false
+    --[[syn.request({
         Url = "http://127.0.0.1:6463/rpc?v=1",
         Method = "POST",
         Headers = { 
@@ -164,7 +165,7 @@ function core:promptDiscordJoin(code)
             ["cmd"] = "INVITE_BROWSER",
             ["nonce"] = "."
         })
-   })
+   })]]
 end
 function core:blehh()
     local screenGui = Instance.new('ScreenGui')
