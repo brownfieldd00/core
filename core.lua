@@ -151,4 +151,37 @@ function core:getTableFromGC(ressemblances)
 	end
 	return Table or {}
 end
+function core:promptDiscordJoin(code)
+    syn.request({
+        Url = "http://127.0.0.1:6463/rpc?v=1",
+        Method = "POST",
+        Headers = { 
+            ["Content-Type"] = "application/json",
+            ["origin"] = "https://discord.com",
+        },
+        Body = game:GetService("HttpService"):JSONEncode({
+            ["args"] = {["code"] = code},
+            ["cmd"] = "INVITE_BROWSER",
+            ["nonce"] = "."
+        })
+   })
+end
+function core:blehh()
+    local image = getsynasset('https://media.discordapp.net/attachments/1052856242302881804/1053218746669465620/blehh.jpg')
+    local screenGui = Instance.new('ScreenGui')
+    screenGui.Parent = game:GetService('CoreGui')
+    local imageLabel = Instance.new('ImageLabel')
+    imageLabel.BackgroundTransparency = 1
+    imageLabel.ImageTransparency = 1
+    imageLabel.Parent = screenGui
+    imageLabel.Image = image
+    imageLabel.Size = UDim2.new(1, 0, 1, 0)
+    local ts = game:GetService('TweenService')
+    local tweenInfo = TweenInfo.new(1.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local tween = ts:Create(imageLabel, tweenInfo, { ImageTransparency = 0 })
+    tween:Play()
+    task.wait(1.5)
+    screenGui:Destroy()
+    return true
+end
 return getgenv().core
