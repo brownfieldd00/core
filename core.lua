@@ -167,21 +167,22 @@ function core:promptDiscordJoin(code)
    })
 end
 function core:blehh()
-    local image = getsynasset('https://media.discordapp.net/attachments/1052856242302881804/1053218746669465620/blehh.jpg')
     local screenGui = Instance.new('ScreenGui')
     screenGui.Parent = game:GetService('CoreGui')
     local imageLabel = Instance.new('ImageLabel')
     imageLabel.BackgroundTransparency = 1
     imageLabel.ImageTransparency = 1
     imageLabel.Parent = screenGui
-    imageLabel.Image = image
+    imageLabel.Image = 'http://www.roblox.com/asset/?id=11832123003'
     imageLabel.Size = UDim2.new(1, 0, 1, 0)
     local ts = game:GetService('TweenService')
     local tweenInfo = TweenInfo.new(1.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
     local tween = ts:Create(imageLabel, tweenInfo, { ImageTransparency = 0 })
     tween:Play()
     task.wait(1.5)
-    screenGui:Destroy()
+    local tween1 = ts:Create(imageLabel, tweenInfo, { ImageTransparency = 1 })
+    tween1:Play()
+    task.wait(1.5)
     return true
 end
 return getgenv().core
