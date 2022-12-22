@@ -54,12 +54,12 @@ end
 function core:getConnection(name)
     return core.Events[name]
 end
-function core:actuallyRequire(name, id)
+function core:require(name, id) -- get a module from Roblox and load it as a module
     local success, module = pcall(function()
-        return game:GetObjects('rbxassetid://' .. tostring(id))[1].Source
+        return loadstring(game:GetObjects('rbxassetid://' .. tostring(id))[1].Source)()
     end)
     if success then
-        core.Modules[name] = loadstring(module)()
+        core.Modules[name] = module
         return core.Modules[name]
     else
         return { error = true }
