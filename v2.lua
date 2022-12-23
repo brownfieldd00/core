@@ -10,3 +10,5 @@ end
 function core:httpG(url)
     return syn.request({Url = url, Method = 'GET'}).Body
 end
+
+return core
