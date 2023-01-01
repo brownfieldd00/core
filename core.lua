@@ -1,3 +1,7 @@
+-- Author: brownfieldd00
+-- URL: https://github.com/brownfieldd00/core/blob/main/core.lua
+-- RAW: https://raw.githubusercontent.com/brownfieldd00/core/main/core.lua
+-- LOADSTRING: core = loadstring(game:HttpGet('https://raw.githubusercontent.com/brownfieldd00/core/main/core.lua'))()
 getgenv = getgenv or getfenv
 getgenv().core = {}
 local core = getgenv().core
