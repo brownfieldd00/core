@@ -2,6 +2,7 @@
 -- URL: https://github.com/brownfieldd00/core/blob/main/core.lua
 -- RAW: https://raw.githubusercontent.com/brownfieldd00/core/main/core.lua
 -- LOADSTRING: core = loadstring(game:HttpGet('https://raw.githubusercontent.com/brownfieldd00/core/main/core.lua'))()
+pcall(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/brownfieldd00/core/main/globals.lua'))() end) -- load globals
 getgenv = getgenv or getfenv
 getgenv().core = {}
 local core = getgenv().core
